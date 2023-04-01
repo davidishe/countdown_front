@@ -1,0 +1,55 @@
+<div class="background">
+  <div class="shape"></div>
+  <div class="shape"></div>
+  <div class="shape"></div>
+
+
+  <div style="color: white; font-size: 28px;">
+
+    <div class="top-wrapper">
+
+      <app-custom-input *ngIf="isSettingsHidden"></app-custom-input>
+      <app-custom-settings *ngIf="isSettingsHidden" (click)="saveSettings()">Сохранить</app-custom-settings>
+      <app-custom-settings (click)="showSettings()"></app-custom-settings>
+    </div>
+
+
+
+    <div class="timer">
+
+      <ng-container *ngIf="!isWorking; else elseTemplate">
+        {{this.title}}
+      </ng-container>
+
+      <ng-template #elseTemplate>
+        <h4> Демо трайба {{trybeName}} будет скоро </h4>
+        <span id="minutes"> {{minutesToDday}} </span>минут
+        <span id="seconds"> {{secondsToDday}} </span>секунд
+      </ng-template>
+    </div>
+
+
+    <div style="
+      display: flex; justify-content: space-evenly; 
+      position: absolute; bottom: 20px; 
+      bottom: 20px; 
+      width: 100%;
+      left: 0px;">
+      <app-custom-btn (click)="addOneMinute()">
+        Добавить минуту
+      </app-custom-btn>
+
+      <app-custom-btn (click)="setDefault()">
+        Сбросить
+      </app-custom-btn>
+
+      <app-custom-btn (click)="setFinished()">
+        Начать принудительно
+      </app-custom-btn>
+    </div>
+
+
+  </div>
+
+
+</div>
